@@ -15,7 +15,7 @@ class QMessageBox;
 class QHBoxLayout;
 class QVBoxLayout;
 class QTextBlock;
-
+class ServerView;
 class MainClient : public QMainWindow
 {
     Q_OBJECT
@@ -40,6 +40,8 @@ private:
     void setupMainWidget();
 
     QString getInfoText(QString filepath);
+
+    ServerView *server_view;
 
     QMessageBox *exit_dialog;
     QMessageBox *about_dialog;

@@ -1,4 +1,5 @@
 #include "../headers/mainclient.h"
+#include "../headers/server_view.h"
 
 #include <QAction>
 #include <QMenu>
@@ -34,6 +35,7 @@ MainClient::MainClient(QWidget *parent)
     connect(actAbout, &QAction::triggered, this, &MainClient::showAbout);
     connect(actHelp, &QAction::triggered, this, &MainClient::showHelp);
     connect(actExit, SIGNAL(triggered()), this, SLOT(closeWindow()));
+    connect(server_view, SIGNAL(updateStatus(QString)), this, SLOT(updateStatus(QString)));
 
     // Initialize window
     setWindowTitle("Server");
@@ -104,7 +106,9 @@ void MainClient::setupMenus(){
 
 
 void MainClient::setupMainWidget(){
-
+    server_view = new ServerView(this);
+    this->setCentralWidget(server_view);
+    server_view->show();
 }
 
 void MainClient::closeEvent(QCloseEvent *event){
