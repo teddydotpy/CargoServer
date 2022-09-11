@@ -37,7 +37,7 @@ ServerModel::~ServerModel(){
 
 void ServerModel::setHomeConfig(){
     QHostAddress home = QHostAddress("127.0.0.1");
-    this->listen(home, 3682);
+    this->listen(home, 6164);
     qDebug() << this->serverError();
 }
 
